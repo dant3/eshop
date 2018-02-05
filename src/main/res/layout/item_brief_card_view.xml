@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp"
+        tools:showIn="@layout/activity_search_item">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <!-- TODO: make better frame for ImageView sizing -->
+        <android.support.percent.PercentFrameLayout
+                android:id="@+id/photo_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+            <ImageView
+                    android:id="@+id/item_photo"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_widthPercent="100%"
+                    app:layout_aspectRatio="100%"
+                    android:scaleType="fitCenter"
+                    android:cropToPadding="true"
+            />
+        </android.support.percent.PercentFrameLayout>
+
+        <TextView
+                android:id="@+id/item_title"
+                tools:text="@tools:sample/lorem/random"
+                android:layout_below="@id/photo_frame"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/item_price"
+                android:layout_below="@id/item_title"
+                android:layout_alignParentEnd="true"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="@sample/shopping.json/items/prices"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <ProgressBar
+                android:id="@+id/loading_indicator"
+                android:indeterminate="true"
+                android:layout_width="32dp"
+                android:layout_centerInParent="true"
+                android:layout_height="32dp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

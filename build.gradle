@@ -1,0 +1,63 @@
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.github.dant3.eshop"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        keepRuntimeAnnotatedClasses false
+    }
+    sourceSets {
+        test.java.srcDirs += file("src/test/kotlin")
+        androidTest.java.srcDirs += file("src/androidTest/kotlin")
+        main.java.srcDirs += file("src/main/kotlin")
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/README'
+    }
+}
+
+
+def deps = new Dependencies(project)
+
+dependencies {
+    implementation deps.kotlinStdlib
+    implementation deps.multiDex
+    implementation deps.stetho
+    implementation deps.jacksonDatabind
+    implementation deps.glide
+    implementation deps.okhttp
+    implementation deps.appCompat
+    implementation deps.anko
+    implementation deps.searchView
+    implementation deps.flexbox
+    implementation deps.liveData
+
+    testImplementation deps.junit
+    testImplementation deps.mockwebserver
+
+    androidTestImplementation deps.espresso
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}

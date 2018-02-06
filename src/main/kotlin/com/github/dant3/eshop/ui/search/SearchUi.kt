@@ -6,12 +6,10 @@ import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import com.github.dant3.eshop.R
-import com.github.dant3.eshop.ui.GridSpacingItemDecoration
-import com.github.dant3.eshop.ui.util.dpToPx
 import com.lapism.searchview.SearchView
 
 
@@ -25,11 +23,11 @@ object SearchUi {
             val searchView = findViewById<SearchView>(R.id.search_view)
             val itemsAdapter = ItemsAdapter()
 
-            val layoutManager = GridLayoutManager(this, 2)
-            val spacingItemDecorator = GridSpacingItemDecoration(layoutManager, dpToPx(10))
+            val layoutManager = LinearLayoutManager(activity)
+//            val spacingItemDecorator = GridSpacingItemDecoration(layoutManager, dpToPx(10))
 
             itemsRecyclerView.layoutManager = layoutManager
-            itemsRecyclerView.addItemDecoration(spacingItemDecorator)
+//            itemsRecyclerView.addItemDecoration(spacingItemDecorator)
             itemsRecyclerView.itemAnimator = DefaultItemAnimator()
             itemsRecyclerView.adapter = itemsAdapter
             itemsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -92,10 +90,10 @@ object SearchUi {
                 }
             })
 
-            if (presenter.items.value?.isEmpty() != false) {
+            if (presenter.items.value == null) {
                 // submitting search view should force loading of content for a query
                 // this seems like a hack, but this way it will display progress without more tweaks
-                searchView.setQuery(searchView.query.toString(), true)
+                presenter.searchQuery.value = searchView.query.toString()
             }
         }
     }

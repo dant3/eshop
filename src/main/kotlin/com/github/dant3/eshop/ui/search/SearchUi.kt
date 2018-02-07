@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import com.github.dant3.eshop.R
+import com.github.dant3.eshop.ui.ItemPaddingDecoration
+import com.github.dant3.eshop.ui.util.dp
 import com.lapism.searchview.SearchView
 
 
@@ -24,10 +26,10 @@ object SearchUi {
             val itemsAdapter = ItemsAdapter()
 
             val layoutManager = LinearLayoutManager(activity)
-//            val spacingItemDecorator = GridSpacingItemDecoration(layoutManager, dpToPx(10))
+            val itemPaddingDecorator = ItemPaddingDecoration(itemSpacing = 10.dp, padding = 10.dp)
 
             itemsRecyclerView.layoutManager = layoutManager
-//            itemsRecyclerView.addItemDecoration(spacingItemDecorator)
+            itemsRecyclerView.addItemDecoration(itemPaddingDecorator)
             itemsRecyclerView.itemAnimator = DefaultItemAnimator()
             itemsRecyclerView.adapter = itemsAdapter
             itemsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {

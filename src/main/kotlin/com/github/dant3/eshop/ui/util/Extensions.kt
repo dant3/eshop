@@ -8,12 +8,6 @@ import android.util.TypedValue
 import java.util.*
 
 
-fun Context.dpToPx(dp: Int): Int {
-    val r = resources
-    return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), r.displayMetrics))
-}
-
-
 val Configuration.localeCompat: Locale
     get() {
         @SuppressWarnings("deprecation")

@@ -10,7 +10,7 @@ class ShoppingApiStub(val objectMapper: ObjectMapper): ShoppingApi {
     private val random = Random()
 
     suspend override fun findItems(searchQuery: String, page: Int): Page<ItemSummary> {
-        val apiResponseDelay = 100 + random.nextInt(2500)
+        val apiResponseDelay = 10 + random.nextInt(200)
 
         Thread.sleep(apiResponseDelay.toLong())
 

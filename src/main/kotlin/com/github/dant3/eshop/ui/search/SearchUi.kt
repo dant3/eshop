@@ -92,10 +92,8 @@ object SearchUi {
                 }
             })
 
-            if (presenter.items.value == null) {
-                // submitting search view should force loading of content for a query
-                // this seems like a hack, but this way it will display progress without more tweaks
-                presenter.searchQuery.value = searchView.query.toString()
+            if (presenter.searchQuery.value.isNullOrBlank() && presenter.items.value?.isEmpty() == true) {
+                presenter.loadInitialData()
             }
         }
     }

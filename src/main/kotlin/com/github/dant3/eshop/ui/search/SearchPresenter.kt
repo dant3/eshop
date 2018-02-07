@@ -85,6 +85,10 @@ class SearchPresenter(lifecycleOwner: LifecycleOwner,
         router.goToItemSummary(itemSummary)
     }
 
+    override fun loadInitialData() {
+        onSearchQuerySubmitted(null)
+    }
+
     override fun onVoiceQueryInputClicked() {
         val thisRef = this.asReference()
         launch (UI) {

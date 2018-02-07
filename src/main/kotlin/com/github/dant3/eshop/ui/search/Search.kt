@@ -15,6 +15,7 @@ interface Search {
         fun onScrolledToLastItem()
         fun onItemClicked(itemSummary: ItemSummary)
         fun onVoiceQueryInputClicked()
+        fun loadInitialData()
     }
 
     interface Interactor {
